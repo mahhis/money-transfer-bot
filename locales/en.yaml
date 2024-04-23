@@ -1,0 +1,131 @@
+name: English
+start: |
+  Tinder for transferring money.
+
+  With the help of this bot you can find a person who, like you, needs to transfer money but in the opposite direction.
+
+  Example:
+  You need to transfer $100 from Belarus to Poland, you inform the bot about this and it gives you a list of transfers from Poland to Belarus with an amount of about or equal to $100.
+  Next, you agree on the method of sending money to its recipient in Belarus and the method of sending money to your recipient in Poland.
+
+  change /language
+  what are the /guarantees
+bad_start: | 
+  I did not understand you
+
+  Click the "Send money" button if you want to send money or "My orders" if you want to view your requests, or you can select one of the commands:  
+  
+  change /language
+  what are the guarantees?  
+guarantees: |
+  The most reliable way to be sure of a transaction is a personal meeting. Agree on where you will meet with his recipient, and he and yours at the same time, and while in touch, exchange money.
+language: Please, select the language.
+language_selected: <b>This bot</b> now speaks English.
+send: Send money
+from: |
+ <b>From</b> which country do you want to send money?
+to: |
+ <b>To</b> which country do you want to send money?
+amount: |
+ Enter the amount you want to send
+cancel_selected: |
+ You are back to the main menu
+cancel: Cancel
+currency: |
+ Select currency
+by: Belarus
+pl: Poland
+bad_country: |
+ I did not understand you
+
+ Select the country from the menu to which you want to send money.
+ 
+ If you want to cancel the sending, then click the “Cancel” button to return to the beginning 
+ or select one of the commands:
+
+ change /language
+ what are the guarantees?
+eur: EUR
+usd: USD
+byn: BYN
+pln: PLN
+bad_currency: |
+ I did not understand you
+ 
+ Select the currency in which you want to send money from the menu.
+ 
+ If you want to cancel the sending, click the "Cancel" button to return to the beginning 
+ or select one of the commands:
+
+ change /language
+ what are the guarantees?
+bad_amount: |
+ I did not understand you
+
+ Enter the amount you want to send, it must be greater than 1 and less than 10,000.
+
+ If you want to cancel the sending, click the "Cancel" button to return to the beginning 
+ or select one of the commands:
+
+ change /language
+ what are the guarantees?
+contact: |
+ You don't have a nickname in your telegram, how can I contact you?
+ 
+ You can specify it in the telegram settings and click the "Check nickname" button
+
+ Or click the "Another way to contact" button and enter it in free form
+ 
+check_nick: Check nickname
+another_way_to_contact: Another way to contact
+enter_another_way_to_contact:  |
+ Example "phone number: +375 29 123 456 7 or instagram: @ zuck"
+
+order: |
+ Request number: ${data.id}
+ From: ${data.from}
+ To: ${data.to}
+ Sum: ${data.amount} ${data.currency}
+ Communication method: ${data.contact}
+
+select_order: |
+ ${data.current} out of ${data.all}:
+
+ Request number: ${data.id}
+ From: ${data.from}
+ To: ${data.to}
+ Sum: ${data.amount} ${data.currency}
+ Communication method: ${data.contact} 
+no_orders: | 
+ Looks like no matching queries were found for you.
+ Let's post yours and the next person who needs to transfer money will contact you.
+
+ Click the "Post my order" button if you want to publish your request 
+ or click the "cancel" button if you want to stop publishing
+if_post_order: |
+ If you have not found a suitable request, click the “Post my order" button
+ and the next person who needs to transfer money will contact you.   
+bad_post_order: | 
+  I did not understand you
+
+  Click the "Post my order" button if you want to publish yours
+
+  If you want to cancel the placement, click the "Cancel" button to return to the beginning
+  or select one of the commands:
+
+  change /language
+  what are the guarantees?  
+recorded: 🗳
+thank: |
+ Thank you for publishing your order, I hope someone will write to you soon and you will successfully exchange money
+not_orders_yet: |
+ You have no published orders.
+
+ If you want to create, click the "Send money" button 
+delete_order:
+ Delete order
+my_orders: |
+ My orders
+post: |
+ Post my order
+order_deleted: Your order has been successfully deleted
