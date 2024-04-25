@@ -1,6 +1,6 @@
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
-import { createSelectionMenu }  from '@/menus/showUserOrders'
+import { createSelectionMenu }  from '@/menus/selection'
 import { findLastAddedOrder, getOrders, getOrdersByUser } from '@/models/OrderProc'
 import { getI18nKeyboard } from '@/helpers/bot'
 
