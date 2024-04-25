@@ -30,8 +30,8 @@ export function findOrCreateOrder(user: User, id: number) {
   export async function getOrders(user: User, countryFrom: string | undefined, countryTo: string | undefined) {
     return await OrderModel.find({ 
       user: { $ne: user }, 
-      countryFrom, 
-      countryTo, 
+      countryTo: countryFrom, 
+      countryFrom: countryTo, 
       ready: true
     });
   }
