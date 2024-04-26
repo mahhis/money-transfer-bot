@@ -16,7 +16,7 @@ bad_start: |
   Click the "Send money" button if you want to send money or "My orders" if you want to view your requests, or you can select one of the commands:  
   
   change /language
-  what are the guarantees?  
+  what are the /guarantees?  
 guarantees: |
   The most reliable way to be sure of a transaction is a personal meeting. Agree on where you will meet with his recipient, and he and yours at the same time, and while in touch, exchange money.
 language: Please, select the language.
@@ -44,7 +44,7 @@ bad_country: |
  or select one of the commands:
 
  change /language
- what are the guarantees?
+ what are the /guarantees?
 eur: EUR
 usd: USD
 byn: BYN
@@ -58,7 +58,7 @@ bad_currency: |
  or select one of the commands:
 
  change /language
- what are the guarantees?
+ what are the /guarantees?
 bad_amount: |
  I did not understand you
 
@@ -68,7 +68,7 @@ bad_amount: |
  or select one of the commands:
 
  change /language
- what are the guarantees?
+ what are the /guarantees?
 contact: |
  You don't have a nickname in your telegram, how can I contact you?
  
@@ -114,7 +114,7 @@ bad_post_order: |
   or select one of the commands:
 
   change /language
-  what are the guarantees?  
+  what are the /guarantees?  
 recorded: 🗳
 thank: |
  Thank you for publishing your order, I hope someone will write to you soon and you will successfully exchange money
@@ -124,8 +124,6 @@ not_orders_yet: |
  If you want to create, click the "Send money" button 
 delete_order:
  Delete order
-my_orders: |
- My orders
-post: |
- Post my order
+my_orders: My orders
 order_deleted: Your order has been successfully deleted
+post: Post my order

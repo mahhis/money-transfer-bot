@@ -36,7 +36,7 @@ export const selectUserOrder = async (ctx: Context) => {
       })
   }
 
-  const menu = createSelectionMenu(ctx, ctx.dbuser.currentOrderIndex!, currentOrdersRequest.length)
+  const menu = createSelectionMenuForUser(ctx, ctx.dbuser.currentOrderIndex!, currentOrdersRequest.length)
 
   if (order && (ctx.dbuser.currentOrderIndex! >= 0) && (ctx.dbuser.currentOrderIndex! < currentOrdersRequest.length)) {
     const message = ctx.i18n.t('select_order', {
@@ -59,7 +59,7 @@ export const selectUserOrder = async (ctx: Context) => {
   }
 }
 
-export function createSelectionMenu(ctx: Context, orderIndex:number,  currentOrdersRequestLenght:number) {
+export function createSelectionMenuForUser(ctx: Context, orderIndex:number,  currentOrdersRequestLenght:number) {
   
   
   const selectionMenu = new InlineKeyboard()

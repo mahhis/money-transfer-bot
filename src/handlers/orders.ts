@@ -3,6 +3,7 @@ import sendOptions from '@/helpers/sendOptions'
 import { createSelectionMenu }  from '@/menus/selection'
 import { findLastAddedOrder, getOrders, getOrdersByUser } from '@/models/OrderProc'
 import { getI18nKeyboard } from '@/helpers/bot'
+import { createSelectionMenuForUser } from '@/menus/showUserOrders'
 
 export async function sendOrders(ctx: Context) {
 
@@ -76,6 +77,6 @@ export async function sendUserOrders(ctx: Context) {
             currency: orders[0].currency,
             contact: orders[0].contact,
           }),
-        reply_markup: createSelectionMenu(ctx, 0, ctx.dbuser.currentOrdersRequest!.length)})
+        reply_markup: createSelectionMenuForUser(ctx, 0, ctx.dbuser.currentOrdersRequest!.length)})
 }
 }
