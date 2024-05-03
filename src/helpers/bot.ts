@@ -13,8 +13,10 @@ export function getI18nKeyboard(lng: string, type: string) {
   switch (type) {
     case 'main':
       keyboard = new Keyboard()
-      .text(i18n.t(lng, 'my_orders')).row()
-      .text(i18n.t(lng, 'send')).resized()
+        .text(i18n.t(lng, 'my_orders'))
+        .row()
+        .text(i18n.t(lng, 'send'))
+        .resized()
       return keyboard
     case 'cancel':
       keyboard = new Keyboard().text(i18n.t(lng, 'cancel')).resized()
@@ -35,7 +37,7 @@ export function getI18nKeyboard(lng: string, type: string) {
         .text(i18n.t(lng, 'cancel'))
         .resized()
 
-      return keyboard   
+      return keyboard
     case 'currencies':
       keyboard = new Keyboard()
         .text('EUR')
@@ -43,6 +45,9 @@ export function getI18nKeyboard(lng: string, type: string) {
         .row()
         .text('BYN')
         .text('PLN')
+        .row()
+        .text('BLNT')
+        .text('G')
         .row()
         .text(i18n.t(lng, 'cancel'))
         .resized()

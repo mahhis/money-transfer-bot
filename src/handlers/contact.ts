@@ -1,12 +1,12 @@
 import { type Message } from '@grammyjs/types'
+import { findLastAddedOrder } from '@/models/OrderProc'
 import { getI18nKeyboard } from '@/helpers/bot'
+import { sendOrders } from '@/handlers/orders'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
-import { sendOrders } from './orders'
-import { findLastAddedOrder } from '@/models/OrderProc'
 
 export async function handleCheckNick(ctx: Context, msg: Message) {
-   const order = await findLastAddedOrder(ctx.dbuser)
+  const order = await findLastAddedOrder(ctx.dbuser)
 
   if (ctx.dbuser.username == null && order!.contact == null) {
     ctx.dbuser.step = 'select_contact'
@@ -34,10 +34,8 @@ export async function handleAnotherWayToContact(ctx: Context, msg: Message) {
 }
 
 export async function handleEnterContact(ctx: Context, msg: Message) {
-
   const order = await findLastAddedOrder(ctx.dbuser)
   order!.contact = ctx.msg?.text
 
   await sendOrders(ctx)
 }
-

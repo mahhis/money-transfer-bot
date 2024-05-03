@@ -1,11 +1,11 @@
 import { type Message } from '@grammyjs/types'
+import { findLastAddedOrder } from '@/models/OrderProc'
+import { getDefaultCountryName } from '@/helpers/defaultValue'
 import { getI18nKeyboard } from '@/helpers/bot'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
-import { getDefaultCountryName } from '@/helpers/defaultValue'
-import { findLastAddedOrder } from '@/models/OrderProc'
 
-export async function handleCountry (ctx: Context, msg: Message) {
+export async function handleCountry(ctx: Context, msg: Message) {
   ctx.dbuser.step = 'select_currency'
   await ctx.dbuser.save()
 

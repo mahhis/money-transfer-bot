@@ -49,6 +49,8 @@ eur: EUR
 usd: USD
 byn: BYN
 pln: PLN
+blnt: BLNT
+g: G
 bad_currency: |
  Я вас не понял
 

@@ -1,13 +1,17 @@
 import { type Message } from '@grammyjs/types'
-import { handleAnotherWayToContact, handleCheckNick, handleEnterContact } from '@/handlers/contact'
+import {
+  handleAnotherWayToContact,
+  handleCheckNick,
+  handleEnterContact,
+} from '@/handlers/contact'
+import { handleCountry, handleCountryTo } from '@/handlers/country'
+import { sendUserOrders } from '@/handlers/orders'
 import Context from '@/models/Context'
 import handleAmount from '@/handlers/amount'
-import handlePostOrder from '@/handlers/post'
 import handleCancel from '@/handlers/cancel'
-import { sendUserOrders } from '@/handlers/orders'
-import { handleCountry, handleCountryTo } from '@/handlers/country'
 import handleCurrency from '@/handlers/currency'
-import { handleSendMoney } from '@/handlers/sendMoney'
+import handlePostOrder from '@/handlers/post'
+import handleSendMoney from '@/handlers/sendMoney'
 import i18n from '@/helpers/i18n'
 import sendOptions from '@/helpers/sendOptions'
 
@@ -22,8 +26,7 @@ export default async function selectStep(ctx: Context) {
     case 'start':
       if (isSendMoney(ctx, message)) {
         return await handleSendMoney(ctx)
-      } else
-      if (isMyOrders(ctx, message)) {
+      } else if (isMyOrders(ctx, message)) {
         return await sendUserOrders(ctx)
       } else {
         return await ctx.replyWithLocalization('bad_start', sendOptions(ctx))
@@ -34,7 +37,7 @@ export default async function selectStep(ctx: Context) {
         return await handleCountryTo(ctx, message)
       } else {
         return await ctx.replyWithLocalization('bad_country', sendOptions(ctx))
-      }   
+      }
     case 'select_country_to':
       if (isCountry(ctx, message)) {
         return await handleCountry(ctx, message)
@@ -68,13 +71,16 @@ export default async function selectStep(ctx: Context) {
         return await ctx.replyWithLocalization('contact', sendOptions(ctx))
       }
     case 'enter_another_way_to_contact':
-        return await handleEnterContact(ctx, message) 
+      return await handleEnterContact(ctx, message)
     case 'check_order':
       if (isPostOrder(ctx, message)) {
         return await handlePostOrder(ctx, message)
       } else {
-        return await ctx.replyWithLocalization('bad_post_order', sendOptions(ctx))
-      }    
+        return await ctx.replyWithLocalization(
+          'bad_post_order',
+          sendOptions(ctx)
+        )
+      }
   }
 }
 
@@ -85,9 +91,7 @@ function isCountry(ctx: Context, message: Message) {
   )
 }
 function isPostOrder(ctx: Context, message: Message) {
-  return (
-    message.text == i18n.t(ctx.dbuser.language, 'post') 
-  )
+  return message.text == i18n.t(ctx.dbuser.language, 'post')
 }
 
 function isCheckNick(ctx: Context, message: Message) {
@@ -106,7 +110,9 @@ function isCurrency(ctx: Context, message: Message) {
     message.text == i18n.t(ctx.dbuser.language, 'eur') ||
     message.text == i18n.t(ctx.dbuser.language, 'usd') ||
     message.text == i18n.t(ctx.dbuser.language, 'byn') ||
-    message.text == i18n.t(ctx.dbuser.language, 'pln')
+    message.text == i18n.t(ctx.dbuser.language, 'pln') ||
+    message.text == i18n.t(ctx.dbuser.language, 'blnt') ||
+    message.text == i18n.t(ctx.dbuser.language, 'g')
   )
 }
 

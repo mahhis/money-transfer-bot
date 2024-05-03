@@ -1,9 +1,9 @@
 import { type Message } from '@grammyjs/types'
+import { findLastAddedOrder } from '@/models/OrderProc'
 import { getI18nKeyboard } from '@/helpers/bot'
+import { sendOrders } from '@/handlers/orders'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
-import { sendOrders } from './orders'
-import { findLastAddedOrder } from '@/models/OrderProc'
 
 export default async function (ctx: Context, msg: Message) {
   const order = await findLastAddedOrder(ctx.dbuser)
