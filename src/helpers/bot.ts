@@ -46,9 +46,6 @@ export function getI18nKeyboard(lng: string, type: string) {
         .text('BYN')
         .text('PLN')
         .row()
-        .text('BLNT')
-        .text('G')
-        .row()
         .text(i18n.t(lng, 'cancel'))
         .resized()
       return keyboard
