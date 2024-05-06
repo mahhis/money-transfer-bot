@@ -1,5 +1,5 @@
-import { Order } from 'src/models/Order'
-import { User } from 'src/models/User'
+import { Order } from '@/models/Order'
+import { User } from '@/models/User'
 import { getModelForClass } from '@typegoose/typegoose'
 
 export const OrderModel = getModelForClass(Order)

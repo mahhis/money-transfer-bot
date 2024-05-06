@@ -1,9 +1,9 @@
-import { Ref, getModelForClass, modelOptions, prop } from '@typegoose/typegoose'
-import { User } from './User'
+import { Ref, modelOptions, prop } from '@typegoose/typegoose'
+import { User } from '@/models/User'
 
 @modelOptions({ schemaOptions: { timestamps: true } })
 export class Order {
-  @prop({ index: true, ref: () => User  })
+  @prop({ index: true, ref: () => User })
   public user?: Ref<User>
   @prop({ required: true })
   id!: number
@@ -19,5 +19,4 @@ export class Order {
   contact?: string
   @prop({ default: false })
   ready?: boolean
-
 }

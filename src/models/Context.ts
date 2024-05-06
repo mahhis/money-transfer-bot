@@ -11,9 +11,13 @@ class Context extends BaseContext {
     text = this.i18n.t(text, other)
     return this.reply(text, other, ...rest)
   }
-  editMessageWithLocalization: this['editMessageText'] = (text, other, ...rest) => {
-    text = this.i18n.t(text, other); 
-    return this.editMessageText(text, other, ...rest); 
+  editMessageWithLocalization: this['editMessageText'] = (
+    text,
+    other,
+    ...rest
+  ) => {
+    text = this.i18n.t(text, other)
+    return this.editMessageText(text, other, ...rest)
   }
 }
 
