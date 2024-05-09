@@ -30,10 +30,13 @@ export async function getOrders(
   countryFrom: string | undefined,
   countryTo: string | undefined
 ) {
+  const tempCountry = countryFrom
+  countryFrom = countryTo
+  countryTo = tempCountry
   return await OrderModel.find({
     user: { $ne: user },
-    countryTo,
     countryFrom,
+    countryTo,
     ready: true,
   })
 }

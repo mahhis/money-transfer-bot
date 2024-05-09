@@ -13,10 +13,11 @@ export async function sendOrders(ctx: Context) {
   const order = await findLastAddedOrder(ctx.dbuser)
 
   const orders = await getOrders(
-    ctx.dbuser,
-    order!.countryFrom,
-    order!.countryTo
+     ctx.dbuser,
+     order!.countryFrom,
+     order!.countryTo
   )
+
   if (orders.length != 0) {
     ctx.dbuser.step = 'check_order'
     ctx.dbuser.currentOrdersRequest = orders
