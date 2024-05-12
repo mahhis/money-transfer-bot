@@ -1,6 +1,6 @@
 import { InlineKeyboard } from 'grammy'
 import { Order } from '@/models/Order'
-import { deleteOrder, findOrderById } from '@/models/OrderProc'
+import { STATUS, deleteOrder, findOrderById } from '@/models/OrderProc'
 import { getI18nKeyboard } from '@/helpers/bot'
 import Context from '@/models/Context'
 import i18n from '@/helpers/i18n'
@@ -25,10 +25,11 @@ export const selectUserOrder = async (ctx: Context) => {
 
   const orderIDs = currentOrdersRequest
   const orderID = orderIDs[ctx.dbuser.currentOrderIndex!]
-  const order: Order | null = await findOrderById(orderID)
+  const order = await findOrderById(orderID)
 
   if (selection == 'delete') {
-    await deleteOrder(order!)
+    order!.status = STATUS.DELETE
+    await order!.save()
 
     await ctx.deleteMessage()
     return await ctx.replyWithLocalization('order_deleted', {

@@ -5,8 +5,8 @@ import { getI18nKeyboard } from '@/helpers/bot'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 
-export async function handleCountry(ctx: Context, msg: Message) {
-  ctx.dbuser.step = 'select_currency'
+export async function handleCountryFrom(ctx: Context, msg: Message) {
+  ctx.dbuser.step = 'select_method_from'
   await ctx.dbuser.save()
 
   const order = await findLastAddedOrder(ctx.dbuser)
@@ -16,14 +16,14 @@ export async function handleCountry(ctx: Context, msg: Message) {
     await order.save()
   }
 
-  return ctx.replyWithLocalization('currency', {
+  return ctx.replyWithLocalization('fromMethod', {
     ...sendOptions(ctx),
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'currencies'),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'cancel'),
   })
 }
 
 export async function handleCountryTo(ctx: Context, msg: Message) {
-  ctx.dbuser.step = 'select_country_to'
+  ctx.dbuser.step = 'select_method_to'
   await ctx.dbuser.save()
 
   const order = await findLastAddedOrder(ctx.dbuser)
@@ -33,8 +33,8 @@ export async function handleCountryTo(ctx: Context, msg: Message) {
     await order.save()
   }
 
-  return ctx.replyWithLocalization('to', {
+  return ctx.replyWithLocalization('toMethod', {
     ...sendOptions(ctx),
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, ''),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'cancel'),
   })
 }

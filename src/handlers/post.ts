@@ -12,7 +12,7 @@ export default async function (ctx: Context, msg: Message) {
 
   const order = await findLastAddedOrder(ctx.dbuser)
   if (order) {
-    order.ready = true
+    order.status = 'active'
     await order.save()
   }
   await ctx.replyWithLocalization('recorded', {

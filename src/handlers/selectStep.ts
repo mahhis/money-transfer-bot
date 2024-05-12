@@ -4,7 +4,8 @@ import {
   handleCheckNick,
   handleEnterContact,
 } from '@/handlers/contact'
-import { handleCountry, handleCountryTo } from '@/handlers/country'
+import { handleCountryFrom, handleCountryTo } from '@/handlers/country'
+import { handleMethodFrom, handleMethodTo } from '@/handlers/method'
 import { sendUserOrders } from '@/handlers/orders'
 import Context from '@/models/Context'
 import handleAmount from '@/handlers/amount'
@@ -31,19 +32,22 @@ export default async function selectStep(ctx: Context) {
       } else {
         return await ctx.replyWithLocalization('bad_start', sendOptions(ctx))
       }
-
     case 'select_country_from':
+      if (isCountry(ctx, message)) {
+        return await handleCountryFrom(ctx, message)
+      } else {
+        return await ctx.replyWithLocalization('bad_country', sendOptions(ctx))
+      }
+    case 'select_method_from':
+      return await handleMethodFrom(ctx, message)
+    case 'select_country_to':
       if (isCountry(ctx, message)) {
         return await handleCountryTo(ctx, message)
       } else {
         return await ctx.replyWithLocalization('bad_country', sendOptions(ctx))
       }
-    case 'select_country_to':
-      if (isCountry(ctx, message)) {
-        return await handleCountry(ctx, message)
-      } else {
-        return await ctx.replyWithLocalization('bad_country', sendOptions(ctx))
-      }
+    case 'select_method_to':
+      return await handleMethodTo(ctx, message)
     case 'select_currency':
       if (isCurrency(ctx, message)) {
         return await handleCurrency(ctx, message)

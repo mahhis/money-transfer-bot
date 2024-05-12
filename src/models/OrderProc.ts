@@ -4,6 +4,12 @@ import { getModelForClass } from '@typegoose/typegoose'
 
 export const OrderModel = getModelForClass(Order)
 
+export enum STATUS {
+  ACTIVE = 'active',
+  PROGRESS = 'progress',
+  DELETE = 'delete',
+}
+
 export function findOrCreateOrder(user: User, id: number) {
   return OrderModel.findOneAndUpdate(
     { user, id },
@@ -37,17 +43,17 @@ export async function getOrders(
     user: { $ne: user },
     countryFrom,
     countryTo,
-    ready: true,
+    status: STATUS.ACTIVE,
   })
 }
 
 export async function findOrderById(orderId: any) {
-  return await OrderModel.findById(orderId).exec()
+  return await OrderModel.findOne({ _id: orderId })
 }
 
 export async function getOrdersByUser(user: User) {
   return await OrderModel.find({
     user: user,
-    ready: true,
+    status: STATUS.ACTIVE,
   })
 }

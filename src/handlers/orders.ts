@@ -13,9 +13,9 @@ export async function sendOrders(ctx: Context) {
   const order = await findLastAddedOrder(ctx.dbuser)
 
   const orders = await getOrders(
-     ctx.dbuser,
-     order!.countryFrom,
-     order!.countryTo
+    ctx.dbuser,
+    order!.countryFrom,
+    order!.countryTo
   )
 
   if (orders.length != 0) {
@@ -34,7 +34,9 @@ export async function sendOrders(ctx: Context) {
         all: ctx.dbuser.currentOrdersRequest!.length,
         id: orders[0].id,
         from: orders[0].countryFrom,
+        methodFrom: orders[0].methodFrom,
         to: orders[0].countryTo,
+        methodTo: orders[0].methodTo,
         amount: orders[0].amount,
         currency: orders[0].currency,
         contact: orders[0].contact,
@@ -54,7 +56,9 @@ export async function sendOrders(ctx: Context) {
       ...sendOptions(ctx, {
         id: order!.id,
         from: order!.countryFrom,
+        methodFrom: order!.methodFrom,
         to: order!.countryTo,
+        methodTo: order!.methodTo,
         amount: order!.amount,
         currency: order!.currency,
         contact: order!.contact,
@@ -82,7 +86,9 @@ export async function sendUserOrders(ctx: Context) {
         all: ctx.dbuser.currentOrdersRequest!.length,
         id: orders[0].id,
         from: orders[0].countryFrom,
+        methodFrom: orders[0].methodFrom,
         to: orders[0].countryTo,
+        methodTo: orders[0].methodTo,
         amount: orders[0].amount,
         currency: orders[0].currency,
         contact: orders[0].contact,
