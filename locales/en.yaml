@@ -27,13 +27,13 @@ from: |
 fromMethod: |
   Write in free form what method you can <b>send</b> money to.
 
-  Example: "By transfer to card" or "Cash upon meeting"  
+  Example: "Cash upon meeting"  
 to: |
  <b>To</b> which country do you want to send money?
 toMethod: | 
  Write in free form what method you can <b>get</b> money from.
 
- Example: "By transfer to card" or "Cash upon meeting"
+ Example: "By transfer to card" 
 amount: |
  Enter the amount you want to send
 cancel_selected: |

@@ -7,6 +7,7 @@ export const OrderModel = getModelForClass(Order)
 export enum STATUS {
   ACTIVE = 'active',
   PROGRESS = 'progress',
+  CANCEL = 'cancel',
   DELETE = 'delete',
 }
 
