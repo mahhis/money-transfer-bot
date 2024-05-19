@@ -15,8 +15,8 @@ export function getI18nKeyboard(lng: string, type: string) {
       keyboard = new Keyboard()
         .text(i18n.t(lng, 'my_orders'))
         .row()
-        .text(i18n.t(lng, 'other_orders'))
-        .row()
+        // .text(i18n.t(lng, 'other_orders'))
+        // .row()
         .text(i18n.t(lng, 'send'))
         .resized()
       return keyboard
