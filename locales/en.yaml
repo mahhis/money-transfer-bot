@@ -43,6 +43,9 @@ currency: |
  Select currency
 by: Belarus
 pl: Poland
+ru: Russia
+ua: Ukraine
+eu: Europe
 bad_country: |
  I did not understand you
 
@@ -57,8 +60,8 @@ eur: EUR
 usd: USD
 byn: BYN
 pln: PLN
-blnt: BLNT
-g: G
+uah: UAH
+rus: RUS
 bad_currency: |
  I did not understand you
  

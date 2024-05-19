@@ -91,7 +91,9 @@ export default async function selectStep(ctx: Context) {
 function isCountry(ctx: Context, message: Message) {
   return (
     message.text == i18n.t(ctx.dbuser.language, 'pl') ||
-    message.text == i18n.t(ctx.dbuser.language, 'by')
+    message.text == i18n.t(ctx.dbuser.language, 'by') ||
+    message.text == i18n.t(ctx.dbuser.language, 'ru') ||
+    message.text == i18n.t(ctx.dbuser.language, 'ua')
   )
 }
 function isPostOrder(ctx: Context, message: Message) {
@@ -115,8 +117,8 @@ function isCurrency(ctx: Context, message: Message) {
     message.text == i18n.t(ctx.dbuser.language, 'usd') ||
     message.text == i18n.t(ctx.dbuser.language, 'byn') ||
     message.text == i18n.t(ctx.dbuser.language, 'pln') ||
-    message.text == i18n.t(ctx.dbuser.language, 'blnt') ||
-    message.text == i18n.t(ctx.dbuser.language, 'g')
+    message.text == i18n.t(ctx.dbuser.language, 'rus') ||
+    message.text == i18n.t(ctx.dbuser.language, 'uah')
   )
 }
 

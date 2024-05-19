@@ -6,6 +6,10 @@ export function getDefaultCountryName(lng: string, text: string) {
         return 'Belarus'
       case 'Польша':
         return 'Poland'
+      case 'Украина':
+        return 'Ukraine'
+      case 'Россия':
+        return 'Russia'
     }
   }
   if (lng == 'en') {
