@@ -75,7 +75,7 @@ bad_currency: |
 bad_amount: |
  I did not understand you
 
- Enter the amount you want to send, it must be greater than 1 and less than 10,000.
+ Enter the amount you want to send, it must be greater than 1 and less than 10 000 000.
 
  If you want to cancel the sending, click the "Cancel" button to return to the beginning 
  or select one of the commands:
@@ -147,5 +147,6 @@ not_orders_yet: |
 delete_order:
  Delete order
 my_orders: My orders
+other_orders: Other orders
 order_deleted: Your order has been successfully deleted
 post: Post my order

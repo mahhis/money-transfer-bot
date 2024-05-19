@@ -29,7 +29,10 @@ export default async function selectStep(ctx: Context) {
         return await handleSendMoney(ctx)
       } else if (isMyOrders(ctx, message)) {
         return await sendUserOrders(ctx)
-      } else {
+      } /*else if (isOtherUsersOrders(ctx, message)) {
+        return await sendOtherUsersOrders(ctx)
+
+      }*/ else {
         return await ctx.replyWithLocalization('bad_start', sendOptions(ctx))
       }
     case 'select_country_from':
@@ -128,11 +131,14 @@ function isCancel(ctx: Context, message: Message) {
 function isMyOrders(ctx: Context, message: Message) {
   return message.text == i18n.t(ctx.dbuser.language, 'my_orders')
 }
+// function isOtherUsersOrders(ctx: Context, message: Message) {
+//   return message.text == i18n.t(ctx.dbuser.language, 'other_orders')
+// }
 
 function isSendMoney(ctx: Context, message: Message) {
   return message.text == i18n.t(ctx.dbuser.language, 'send')
 }
 function isAmount(ctx: Context, message: Message) {
   const amount = parseFloat(message.text!)
-  return !isNaN(amount) && amount > 1 && amount < 10000
+  return !isNaN(amount) && amount > 1 && amount < 10000000
 }
