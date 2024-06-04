@@ -5,17 +5,17 @@ import 'source-map-support/register'
 import { bot } from '@/helpers/bot'
 import { ignoreOld, sequentialize } from 'grammy-middlewares'
 import { run } from '@grammyjs/runner'
+import { selectOrder } from '@/menus/selection'
+import { selectUserOrder } from '@/menus/showUserOrders'
 import attachUser from '@/middlewares/attachUser'
 import configureI18n from '@/middlewares/configureI18n'
 import handleLanguage from '@/handlers/language'
 import i18n from '@/helpers/i18n'
 import languageMenu from '@/menus/language'
 import selectStep from '@/handlers/selectStep'
-import sendGuarantees from '@/handlers/guarantees'
+import sendGuarantees from '@/handlers/tinder/guarantees'
 import sendStart from '@/handlers/start'
 import startMongo from '@/helpers/startMongo'
-import { selectOrder } from './menus/selection'
-import { selectUserOrder } from './menus/showUserOrders'
 
 async function runApp() {
   console.log('Starting app...')
@@ -31,23 +31,14 @@ async function runApp() {
     .use(configureI18n)
     // Menus
     .use(languageMenu)
-    // Commands
+  // Commands
   bot.command('guarantees', sendGuarantees)
   bot.command('start', sendStart)
   bot.command('language', handleLanguage)
 
   bot.on('message', selectStep)
-  bot.callbackQuery(
-    [
-      'previous',
-      'next',
-    ], selectOrder)
-bot.callbackQuery(
-  [
-    'previous_my',
-    'next_my',
-    'delete'
-  ], selectUserOrder)
+  bot.callbackQuery(['previous', 'next'], selectOrder)
+  bot.callbackQuery(['previous_my', 'next_my', 'delete'], selectUserOrder)
   // Errors
   bot.catch(console.error)
   // Start bot

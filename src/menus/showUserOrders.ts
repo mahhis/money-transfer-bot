@@ -1,6 +1,5 @@
 import { InlineKeyboard } from 'grammy'
-import { Order } from '@/models/Order'
-import { STATUS, deleteOrder, findOrderById } from '@/models/OrderProc'
+import { STATUS, findOrderById } from '@/models/OrderProc'
 import { getI18nKeyboard } from '@/helpers/bot'
 import Context from '@/models/Context'
 import i18n from '@/helpers/i18n'
@@ -34,7 +33,7 @@ export const selectUserOrder = async (ctx: Context) => {
     await ctx.deleteMessage()
     return await ctx.replyWithLocalization('order_deleted', {
       ...sendOptions(ctx),
-      reply_markup: getI18nKeyboard(ctx.dbuser.language, 'main'),
+      reply_markup: getI18nKeyboard(ctx.dbuser.language, 'tinder'),
     })
   }
 

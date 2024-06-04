@@ -3,16 +3,19 @@ import {
   handleAnotherWayToContact,
   handleCheckNick,
   handleEnterContact,
-} from '@/handlers/contact'
-import { handleCountryFrom, handleCountryTo } from '@/handlers/country'
-import { handleMethodFrom, handleMethodTo } from '@/handlers/method'
-import { sendUserOrders } from '@/handlers/orders'
+} from '@/handlers/tinder/contact'
+import { handleCountryFrom, handleCountryTo } from '@/handlers/tinder/country'
+import { handleMethodFrom, handleMethodTo } from '@/handlers/tinder/method'
+import { sendUserOrders } from '@/handlers/tinder/orders'
 import Context from '@/models/Context'
-import handleAmount from '@/handlers/amount'
-import handleCancel from '@/handlers/cancel'
-import handleCurrency from '@/handlers/currency'
-import handlePostOrder from '@/handlers/post'
-import handleSendMoney from '@/handlers/sendMoney'
+import handleAddToWaitList from '@/handlers/transfer/addToWaitList'
+import handleAmount from '@/handlers/tinder/amount'
+import handleCancel from '@/handlers/tinder/cancel'
+import handleCurrency from '@/handlers/tinder/currency'
+import handlePostOrder from '@/handlers/tinder/post'
+import handleSendMoney from '@/handlers/tinder/sendMoney'
+import handleStartTinder from '@/handlers/tinder/startTinder'
+import handleStartTransfer from '@/handlers/transfer/startTransfer'
 import i18n from '@/helpers/i18n'
 import sendOptions from '@/helpers/sendOptions'
 
@@ -25,15 +28,32 @@ export default async function selectStep(ctx: Context) {
 
   switch (ctx.dbuser.step) {
     case 'start':
+      if (isTinder(ctx, message)) {
+        return await handleStartTinder(ctx)
+      } else if (isTransfer(ctx, message)) {
+        return await handleStartTransfer(ctx)
+      } else {
+        return await ctx.replyWithLocalization('bad_start', sendOptions(ctx))
+      }
+    case 'tinder':
       if (isSendMoney(ctx, message)) {
         return await handleSendMoney(ctx)
       } else if (isMyOrders(ctx, message)) {
         return await sendUserOrders(ctx)
-      } /*else if (isOtherUsersOrders(ctx, message)) {
-        return await sendOtherUsersOrders(ctx)
-
-      }*/ else {
-        return await ctx.replyWithLocalization('bad_start', sendOptions(ctx))
+      } else {
+        return await ctx.replyWithLocalization(
+          'bad_start_tinder',
+          sendOptions(ctx)
+        )
+      }
+    case 'transfer':
+      if (isAdd(ctx, message)) {
+        return await handleAddToWaitList(ctx)
+      } else {
+        return await ctx.replyWithLocalization(
+          'bad_start_transfer',
+          sendOptions(ctx)
+        )
       }
     case 'select_country_from':
       if (isCountry(ctx, message)) {
@@ -131,9 +151,6 @@ function isCancel(ctx: Context, message: Message) {
 function isMyOrders(ctx: Context, message: Message) {
   return message.text == i18n.t(ctx.dbuser.language, 'my_orders')
 }
-// function isOtherUsersOrders(ctx: Context, message: Message) {
-//   return message.text == i18n.t(ctx.dbuser.language, 'other_orders')
-// }
 
 function isSendMoney(ctx: Context, message: Message) {
   return message.text == i18n.t(ctx.dbuser.language, 'send')
@@ -141,4 +158,15 @@ function isSendMoney(ctx: Context, message: Message) {
 function isAmount(ctx: Context, message: Message) {
   const amount = parseFloat(message.text!)
   return !isNaN(amount) && amount > 1 && amount < 10000000
+}
+
+function isTinder(ctx: Context, message: Message) {
+  return message.text == i18n.t(ctx.dbuser.language, 'tinder')
+}
+function isTransfer(ctx: Context, message: Message) {
+  return message.text == i18n.t(ctx.dbuser.language, 'transfer')
+}
+
+function isAdd(ctx: Context, message: Message) {
+  return message.text == i18n.t(ctx.dbuser.language, 'add')
 }

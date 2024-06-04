@@ -1,10 +1,10 @@
 import { Menu } from '@grammyjs/menu'
 import { cwd } from 'process'
+import { getI18nKeyboard } from '@/helpers/bot'
 import { load } from 'js-yaml'
 import { readFileSync, readdirSync } from 'fs'
 import { resolve } from 'path'
 import Context from '@/models/Context'
-import { getI18nKeyboard } from '@/helpers/bot'
 
 interface YamlWithName {
   name: string
@@ -25,7 +25,7 @@ const setLanguage = (languageCode: string) => async (ctx: Context) => {
   await ctx.deleteMessage()
   return ctx.replyWithLocalization(ctx.i18n.t('language_selected'), {
     parse_mode: 'HTML',
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'main'),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'tinder'),
   })
 }
 

@@ -15,4 +15,6 @@ export class User {
   currentOrdersRequest?: Ref<Order>[]
   @prop({ default: 0 })
   currentOrderIndex?: number
+  @prop({ required: true, default: false })
+  inWaitList!: boolean
 }

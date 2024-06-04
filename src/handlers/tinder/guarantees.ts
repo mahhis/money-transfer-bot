@@ -7,6 +7,6 @@ export default async function handleHelp(ctx: Context) {
   await ctx.dbuser.save()
   return ctx.replyWithLocalization('guarantees', {
     ...sendOptions(ctx),
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'main'),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'tinder'),
   })
 }

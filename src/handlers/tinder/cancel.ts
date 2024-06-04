@@ -13,6 +13,6 @@ export default async function (ctx: Context) {
   await order!.save()
   return ctx.replyWithLocalization('cancel_selected', {
     ...sendOptions(ctx),
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'main'),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'start'),
   })
 }

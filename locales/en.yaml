@@ -1,5 +1,28 @@
 name: English
-start: |
+start: | 
+ <b>Tinder</b> for transferring money.
+
+ Using this section of the bot, you can find a person who, like you, needs to send money but in the opposite direction.
+
+ <b>Transfer</b> money immediately
+
+ Here you can send money to any country using a regular transfer to a card.
+
+ To do this, we find the cheapest way to buy/sell cryptocurrency through p2p platforms.
+
+ change /language
+start_transfer: |
+ This function is available to a limited number of users. Add yourself to the waitlist and you will be notified as soon as it is your turn. 
+ To do this, click the add button.
+ 
+ If you need a money transfer urgently, write @ma66is: “Hi, I need to transfer money from country X to country Y” and we will help you individually. 
+bad_start_transfer: |
+ I did not understand you
+
+ Click the "Add" button if you want to add yourself to the waiting list or "Cancel" if you want to return to the main menu or you can select one of the commands:
+
+ change /language
+start_tinder: |
   Tinder for transferring money.
 
   With the help of this bot you can find a person who, like you, needs to transfer money but in the opposite direction.
@@ -10,7 +33,13 @@ start: |
 
   change /language
   what are the /guarantees
-bad_start: | 
+bad_start: |
+ I did not understand you
+
+ Click the "Transfer" button if you want to send money immediately or "Tinder" if you want to find a person for transfer money, or you can select one of the commands:
+
+ change /language
+bad_start_tinder: | 
   I did not understand you
 
   Click the "Send money" button if you want to send money or "My orders" if you want to view your requests, or you can select one of the commands:  
@@ -150,3 +179,7 @@ my_orders: My orders
 other_orders: Other orders
 order_deleted: Your order has been successfully deleted
 post: Post my order
+tinder: Tinder
+transfer: Transfer
+add: Add
+added: You have been successfully added to the waiting list, thank you, we will give you access soon

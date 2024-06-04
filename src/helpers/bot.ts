@@ -11,13 +11,27 @@ export function getI18nKeyboard(lng: string, type: string) {
   let keyboard: Keyboard
 
   switch (type) {
-    case 'main':
+    case 'start':
+      keyboard = new Keyboard()
+        .text(i18n.t(lng, 'tinder'))
+        .row()
+        .text(i18n.t(lng, 'transfer'))
+        .resized()
+      return keyboard
+    case 'tinder':
       keyboard = new Keyboard()
         .text(i18n.t(lng, 'my_orders'))
         .row()
-        // .text(i18n.t(lng, 'other_orders'))
-        // .row()
         .text(i18n.t(lng, 'send'))
+        .row()
+        .text(i18n.t(lng, 'cancel'))
+        .resized()
+      return keyboard
+    case 'transfer':
+      keyboard = new Keyboard()
+        .text(i18n.t(lng, 'add'))
+        .row()
+        .text(i18n.t(lng, 'cancel'))
         .resized()
       return keyboard
     case 'cancel':
@@ -33,7 +47,6 @@ export function getI18nKeyboard(lng: string, type: string) {
         .row()
         .text(i18n.t(lng, 'cancel'))
         .resized()
-
       return keyboard
     case 'post':
       keyboard = new Keyboard()

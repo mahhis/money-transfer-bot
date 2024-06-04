@@ -74,7 +74,7 @@ export async function sendUserOrders(ctx: Context) {
   if (orders.length == 0) {
     return await ctx.replyWithLocalization('not_orders_yet', {
       ...sendOptions(ctx),
-      reply_markup: getI18nKeyboard(ctx.dbuser.language, 'main'),
+      reply_markup: getI18nKeyboard(ctx.dbuser.language, 'tinder'),
     })
   } else {
     ctx.dbuser.currentOrdersRequest = orders

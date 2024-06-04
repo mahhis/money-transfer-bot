@@ -5,7 +5,7 @@ import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 
 export default async function (ctx: Context, msg: Message) {
-  ctx.dbuser.step = 'start'
+  ctx.dbuser.step = 'tinder'
   ctx.dbuser.currentOrdersRequest = []
   ctx.dbuser.currentOrderIndex = 0
   await ctx.dbuser.save()
@@ -22,6 +22,6 @@ export default async function (ctx: Context, msg: Message) {
 
   return await ctx.replyWithLocalization('thank', {
     ...sendOptions(ctx),
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'main'),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'tinder'),
   })
 }
