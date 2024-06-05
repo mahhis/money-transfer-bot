@@ -25,7 +25,7 @@ const setLanguage = (languageCode: string) => async (ctx: Context) => {
   await ctx.deleteMessage()
   return ctx.replyWithLocalization(ctx.i18n.t('language_selected'), {
     parse_mode: 'HTML',
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'tinder'),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'start'),
   })
 }
 
