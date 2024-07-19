@@ -9,4 +9,6 @@ dotenv.config({ path: resolve(cwd(), '.env') })
 export default cleanEnv(process.env, {
   TOKEN: str(),
   MONGO: str(),
+  TOKEN_NOTIFY: str(),
+  CHAT_ID: str(),
 })

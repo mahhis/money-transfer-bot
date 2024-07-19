@@ -231,7 +231,7 @@ offer_for_trnafer: |
  Сеть: ${data.protocol}
  Курс за 1 USDT: ${data.exchangeRateSell} ${data.currencySell}
 
- Финальная сумма: ${data.sum}
+ Финальная сумма: ${data.sum} ${data.currencySell}
 update_offers: Обновить предложения 
 bad_req: | 
   Я вас не понял

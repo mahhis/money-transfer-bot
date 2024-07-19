@@ -232,7 +232,7 @@ offer_for_trnafer: |
  Network: ${data.protocol}
  Rate for 1 USDT: ${data.exchangeRateSell} ${data.currencySell}
 
- Final sum: ${data.sum}
+ Final sum: ${data.sum} ${data.currencySell}
 update_offers: Update offers
 one_click_transfer: |
  If you want to transfer money in one click through a bot, select the appropriate pair of offers and click the 'Transfer in one click' button
