@@ -11,15 +11,35 @@ start: |
  To do this, we find the cheapest way to buy/sell cryptocurrency through p2p platforms.
 
  change /language
-start_transfer: |
+start_transfer : |
+ <b>Transfer</b> money immediately
+
+ Here you can send money to any country using a regular transfer to a card.
+
+ To do this, we find the cheapest way to buy/sell cryptocurrency through p2p platforms.
+send_flag_from: |
+ Open the emoji keyboard on your device, enter the country you want to send money from in the search and send the flag emoji of that country.
+
+ If your sending country is ${data.country}, then send ${data.flag}
+send_flag_to: |
+ Where do you want to send money?
+
+ If your receiving country is ${data.country}, then send ${data.flag}
+not_yet_on_waiting_list: |
  This function is available to a limited number of users. Add yourself to the waitlist and you will be notified as soon as it is your turn. 
  To do this, click the add button.
  
  If you need a money transfer urgently, write @ma66is: “Hi, I need to transfer money from country X to country Y” and we will help you individually. 
+
+already_on_waiting_list: |
+ You are already on the waiting list.
+
+ If you need a money transfer urgently, write @ma66is: “Hi, I need to transfer money from country X to country Y” and we will help you individually. 
+  
 bad_start_transfer: |
  I did not understand you
 
- Click the "Add" button if you want to add yourself to the waiting list or "Cancel" if you want to return to the main menu or you can select one of the commands:
+ Click the "Other orders" button if you want to select a orders that suits you or "My orders" if you want to view your orders, or you can select one of the commands:
 
  change /language
 start_tinder: |
@@ -50,7 +70,7 @@ guarantees: |
   The most reliable way to be sure of a transaction is a personal meeting. Agree on where you will meet with his recipient, and he and yours at the same time, and while in touch, exchange money.
 language: Please, select the language.
 language_selected: <b>This bot</b> now speaks English.
-send: Send money
+send_money: Send money
 from: |
  <b>From</b> which country do you want to send money?
 fromMethod: |
@@ -65,6 +85,8 @@ toMethod: |
  Example: "By transfer to card" 
 amount: |
  Enter the amount you want to send
+amount_transfer: |
+ Enter the amount in national currency (${data.currency}) you want to transfer  
 cancel_selected: |
  You are back to the main menu
 cancel: Cancel
@@ -183,3 +205,32 @@ tinder: Tinder
 transfer: Transfer
 add: Add
 added: You have been successfully added to the waiting list, thank you, we will give you access soon
+setup_filters: Set filters to select suitable orders
+payment_system_from: |
+ Choose how you can send money 
+payment_system_to: |
+ Choose how you can get money  
+finish: |
+ Click the "Finish" button when you have selected all the methods that suit you.
+finish_btn: Finish   
+offer_for_trnafer: |
+ ${data.index} of ${data.length} ways
+
+ Visit ${data.platformForBuy}
+ <a href="${data.linkFrom}">Buying</a>
+ Seller's nickname: ${data.nameSeller}
+ Network: ${data.protocol}
+ Rate for 1 USDT: ${data.exchangeRateBuy} ${data.currencyBuy}
+
+ Transfer to ${data.platformForSale}
+ Transfer fee between seller and buyer: ${data.fees} USDT
+
+ <a href="${data.linkTo}">Selling</a>
+ Buyer nickname: ${data.nameBuyer}
+ Network: ${data.protocol}
+ Rate for 1 USDT: ${data.exchangeRateSell} ${data.currencySell}
+
+ Final sum: ${data.sum}
+update_offers: Update offers
+one_click_transfer: |
+ If you want to transfer money in one click through a bot, select the appropriate pair of offers and click the 'Transfer in one click' button

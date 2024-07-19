@@ -1,7 +1,8 @@
 import { type Message } from '@grammyjs/types'
 import { findLastAddedOrder } from '@/models/OrderProc'
-import { getI18nKeyboard } from '@/helpers/bot'
-import { sendOrders } from '@/handlers/tinder/orders'
+import getI18nKeyboard from '@/menus/custom/default'
+
+import { sendOrders } from '@/handlers/tinder/order'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 
@@ -24,7 +25,7 @@ export async function handleCheckNick(ctx: Context, msg: Message) {
   }
 }
 
-export async function handleAnotherWayToContact(ctx: Context, msg: Message) {
+export async function handleAnotherWayToContact(ctx: Context) {
   ctx.dbuser.step = 'enter_another_way_to_contact'
   await ctx.dbuser.save()
   await ctx.replyWithLocalization('enter_another_way_to_contact', {
@@ -33,7 +34,7 @@ export async function handleAnotherWayToContact(ctx: Context, msg: Message) {
   })
 }
 
-export async function handleEnterContact(ctx: Context, msg: Message) {
+export async function handleEnterContact(ctx: Context) {
   const order = await findLastAddedOrder(ctx.dbuser)
   order!.contact = ctx.msg?.text
 

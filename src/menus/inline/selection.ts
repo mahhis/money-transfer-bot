@@ -1,12 +1,10 @@
 import { InlineKeyboard } from 'grammy'
-import { Order } from '@/models/Order'
-import { findOrderById } from '@/models/OrderProc'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 
 export const selectOrder = async (ctx: Context) => {
   const selection = ctx.callbackQuery?.data
-  const currentOrdersRequest = ctx.dbuser.currentOrdersRequest!
+  const currentOrdersRequest = ctx.dbuser.currentTransferOrdersRequest!
 
   if (selection == 'previous' && ctx.dbuser.currentOrderIndex! > 0) {
     ctx.dbuser.currentOrderIndex = ctx.dbuser.currentOrderIndex! - 1
@@ -21,10 +19,7 @@ export const selectOrder = async (ctx: Context) => {
     await ctx.dbuser.save()
   }
 
-  const orderIDs = currentOrdersRequest
-  const orderID = orderIDs[ctx.dbuser.currentOrderIndex!]
-  const order: Order | null = await findOrderById(orderID)
-
+  const order = currentOrdersRequest[ctx.dbuser.currentOrderIndex!]
   const menu = createSelectionMenu(
     ctx,
     ctx.dbuser.currentOrderIndex!,
@@ -38,20 +33,20 @@ export const selectOrder = async (ctx: Context) => {
   ) {
     const message = ctx.i18n.t('select_order', {
       ...sendOptions(ctx, {
-        current: ctx.dbuser.currentOrderIndex! + 1,
-        all: currentOrdersRequest.length,
-        id: order.id,
-        from: order.countryFrom,
-        methodFrom: order.methodFrom,
-        to: order.countryTo,
-        methodTo: order.methodTo,
-        amount: order.amount,
-        currency: order.currency,
-        contact: order.contact,
+        // current: ctx.dbuser.currentOrderIndex! + 1,
+        // all: currentOrdersRequest.length,
+        // id: order.id,
+        // from: order.countryFrom,
+        // methodFrom: order.methodFrom,
+        // to: order.countryTo,
+        // methodTo: order.methodTo,
+        // amount: order.amount,
+        // currency: order.currency,
+        // contact: order.contact,
       }),
     })
 
-    ctx.editMessageText(message, {
+    await ctx.editMessageText(message, {
       parse_mode: 'HTML',
       reply_markup: menu,
     })

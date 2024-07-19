@@ -2,16 +2,21 @@ import 'module-alias/register'
 import 'reflect-metadata'
 import 'source-map-support/register'
 
-import { bot } from '@/helpers/bot'
+import {
+  getFromPaymentSystemsMenu,
+  getToPaymentSystemsMenu,
+} from '@/menus/inline/paymentSystems'
 import { ignoreOld, sequentialize } from 'grammy-middlewares'
 import { run } from '@grammyjs/runner'
-import { selectOrder } from '@/menus/selection'
-import { selectUserOrder } from '@/menus/showUserOrders'
+import { selectOrder } from '@/menus/inline/selection'
+import { selectOrderTransfer } from '@/menus/inline/showTransferOrders'
+import { selectUserOrder } from '@/menus/inline/showUserOrders'
 import attachUser from '@/middlewares/attachUser'
+import bot from '@/helpers/bot'
 import configureI18n from '@/middlewares/configureI18n'
 import handleLanguage from '@/handlers/language'
 import i18n from '@/helpers/i18n'
-import languageMenu from '@/menus/language'
+import languageMenu from '@/menus/inline/language'
 import selectStep from '@/handlers/selectStep'
 import sendGuarantees from '@/handlers/tinder/guarantees'
 import sendStart from '@/handlers/start'
@@ -38,7 +43,25 @@ async function runApp() {
 
   bot.on('message', selectStep)
   bot.callbackQuery(['previous', 'next'], selectOrder)
+  bot.callbackQuery(
+    ['previous_offers', 'next_offers', 'update'],
+    async (ctx) => {
+      await selectOrderTransfer(ctx)
+      await ctx.answerCallbackQuery()
+    }
+  )
   bot.callbackQuery(['previous_my', 'next_my', 'delete'], selectUserOrder)
+
+  bot.on('callback_query:data', async (ctx) => {
+    if (ctx.dbuser.step === 'enter_payment_system_from') {
+      await getFromPaymentSystemsMenu(ctx)
+      await ctx.answerCallbackQuery()
+    } else if (ctx.dbuser.step === 'enter_payment_system_to') {
+      await getToPaymentSystemsMenu(ctx)
+      await ctx.answerCallbackQuery()
+    }
+  })
+
   // Errors
   bot.catch(console.error)
   // Start bot

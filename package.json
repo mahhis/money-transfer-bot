@@ -1,10 +1,8 @@
 {
-  "name": "telegram-bot-starter",
+  "name": "fe1p",
   "version": "1.0.0",
-  "description": "Telegram bot starter based on grammY",
+  "description": "fiat blockchain",
   "main": "dist/app.js",
-  "repository": "https://github.com/Borodutch/telegram-bot-template",
-  "author": "backmeupplz <backmeupplz@gmail.com>",
   "license": "MIT",
   "scripts": {
     "distribute": "yarn build-ts && node dist/app.js",
@@ -27,6 +25,7 @@
     "@typegoose/typegoose": "^9.3.1",
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^16.11.12",
+    "@types/node-fetch": "^2.6.11",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "eslint": "^8.4.1",

@@ -1,6 +1,7 @@
 import { type Message } from '@grammyjs/types'
 import { findLastAddedOrder } from '@/models/OrderProc'
-import { getI18nKeyboard } from '@/helpers/bot'
+import getI18nKeyboard from '@/menus/custom/default'
+
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 
@@ -10,7 +11,7 @@ export default async function (ctx: Context, msg: Message) {
 
   const order = await findLastAddedOrder(ctx.dbuser)
   if (order) {
-    order.currency = msg.text
+    order!.currency = msg.text
     await order.save()
   }
   return ctx.replyWithLocalization('amount', {

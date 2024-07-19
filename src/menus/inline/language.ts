@@ -1,6 +1,7 @@
 import { Menu } from '@grammyjs/menu'
 import { cwd } from 'process'
-import { getI18nKeyboard } from '@/helpers/bot'
+import getI18nKeyboard from '@/menus/custom/default'
+
 import { load } from 'js-yaml'
 import { readFileSync, readdirSync } from 'fs'
 import { resolve } from 'path'

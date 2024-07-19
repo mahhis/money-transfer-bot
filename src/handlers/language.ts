@@ -1,5 +1,5 @@
 import Context from '@/models/Context'
-import languageMenu from '@/menus/language'
+import languageMenu from '@/menus/inline/language'
 import sendOptions from '@/helpers/sendOptions'
 
 export default async function handleLanguage(ctx: Context) {

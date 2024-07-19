@@ -1,4 +1,5 @@
-import { getI18nKeyboard } from '@/helpers/bot'
+import getI18nKeyboard from '@/menus/custom/default'
+
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 

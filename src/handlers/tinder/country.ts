@@ -1,8 +1,9 @@
 import { type Message } from '@grammyjs/types'
 import { findLastAddedOrder } from '@/models/OrderProc'
 import { getDefaultCountryName } from '@/helpers/defaultValue'
-import { getI18nKeyboard } from '@/helpers/bot'
+
 import Context from '@/models/Context'
+import getI18nKeyboard from '@/menus/custom/default'
 import sendOptions from '@/helpers/sendOptions'
 
 export async function handleCountryFrom(ctx: Context, msg: Message) {
@@ -12,7 +13,7 @@ export async function handleCountryFrom(ctx: Context, msg: Message) {
   const order = await findLastAddedOrder(ctx.dbuser)
   if (order) {
     const countryName = getDefaultCountryName(ctx.dbuser.language, msg.text!)
-    order.countryFrom = countryName
+    order!.countryFrom = countryName
     await order.save()
   }
 

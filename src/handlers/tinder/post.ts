@@ -1,10 +1,11 @@
 import { type Message } from '@grammyjs/types'
 import { findLastAddedOrder } from '@/models/OrderProc'
-import { getI18nKeyboard } from '@/helpers/bot'
+import getI18nKeyboard from '@/menus/custom/default'
+
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 
-export default async function (ctx: Context, msg: Message) {
+export default async function (ctx: Context) {
   ctx.dbuser.step = 'tinder'
   ctx.dbuser.currentOrdersRequest = []
   ctx.dbuser.currentOrderIndex = 0

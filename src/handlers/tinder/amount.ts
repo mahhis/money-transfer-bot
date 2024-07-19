@@ -1,7 +1,8 @@
 import { type Message } from '@grammyjs/types'
 import { findLastAddedOrder } from '@/models/OrderProc'
-import { getI18nKeyboard } from '@/helpers/bot'
-import { sendOrders } from '@/handlers/tinder/orders'
+import getI18nKeyboard from '@/menus/custom/default'
+
+import { sendOrders } from '@/handlers/tinder/order'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 

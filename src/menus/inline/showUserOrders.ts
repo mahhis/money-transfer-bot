@@ -1,6 +1,7 @@
 import { InlineKeyboard } from 'grammy'
 import { STATUS, findOrderById } from '@/models/OrderProc'
-import { getI18nKeyboard } from '@/helpers/bot'
+import getI18nKeyboard from '@/menus/custom/default'
+
 import Context from '@/models/Context'
 import i18n from '@/helpers/i18n'
 import sendOptions from '@/helpers/sendOptions'
