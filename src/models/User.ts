@@ -23,6 +23,6 @@ export class User {
   currentTransferOrdersRequest?: TPairOffers[]
   @prop({ default: 0 })
   currentOrderIndex?: number
-  @prop({ required: true, default: 'NOT' }) // NOT, WAITING, ADDED
+  @prop({ required: true, default: 'ADDED' }) // NOT, WAITING, ADDED
   inWaitList!: string
 }
