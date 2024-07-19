@@ -9,6 +9,7 @@ import {
 import { findOrCreateOrder } from '@/models/OrderProc'
 import getI18nKeyboard from '@/menus/custom/default'
 
+import { getRandomFlagObject } from '@/models/OrderTransferProc'
 import Context from '@/models/Context'
 import sendOptions from '@/helpers/sendOptions'
 
@@ -22,9 +23,14 @@ export async function handleOtherOrders(ctx: Context) {
     reply_markup: undefined,
   })
 
-  return await ctx.replyWithLocalization('from', {
-    ...sendOptions(ctx),
-    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'countries'),
+  const exampleCountryData = getRandomFlagObject()
+
+  return ctx.replyWithLocalization('send_flag_from', {
+    ...sendOptions(ctx, {
+      flag: exampleCountryData.flag,
+      country: exampleCountryData.country,
+    }),
+    reply_markup: getI18nKeyboard(ctx.dbuser.language, 'cancel'),
   })
 }
 

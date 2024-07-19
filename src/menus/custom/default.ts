@@ -45,17 +45,17 @@ export default function getI18nKeyboard(lng: string, type: string) {
     case 'cancel':
       keyboard = new Keyboard().text(i18n.t(lng, 'cancel')).resized()
       return keyboard
-    case 'countries':
-      keyboard = new Keyboard()
-        .text(i18n.t(lng, 'ua'))
-        .text(i18n.t(lng, 'pl'))
-        .row()
-        .text(i18n.t(lng, 'by'))
-        .text(i18n.t(lng, 'ru'))
-        .row()
-        .text(i18n.t(lng, 'cancel'))
-        .resized()
-      return keyboard
+    // case 'countries':
+    //   keyboard = new Keyboard()
+    //     .text(i18n.t(lng, 'ua'))
+    //     .text(i18n.t(lng, 'pl'))
+    //     .row()
+    //     .text(i18n.t(lng, 'by'))
+    //     .text(i18n.t(lng, 'ru'))
+    //     .row()
+    //     .text(i18n.t(lng, 'cancel'))
+    //     .resized()
+    //   return keyboard
     case 'post':
       keyboard = new Keyboard()
         .text(i18n.t(lng, 'post'))
@@ -69,10 +69,7 @@ export default function getI18nKeyboard(lng: string, type: string) {
         .text('EUR')
         .text('USD')
         .row()
-        .text('UAH')
-        .text('PLN')
-        .row()
-        .text('BYN')
+        .text('CNY')
         .text('RUS')
         .row()
         .text(i18n.t(lng, 'cancel'))

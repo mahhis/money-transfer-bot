@@ -44,7 +44,7 @@ async function runApp() {
   bot.on('message', selectStep)
   bot.callbackQuery(['previous', 'next'], selectOrder)
   bot.callbackQuery(
-    ['previous_offers', 'next_offers', 'update'],
+    ['previous_offers', 'next_offers', 'update', 'make_transfer'],
     async (ctx) => {
       await selectOrderTransfer(ctx)
       await ctx.answerCallbackQuery()

@@ -105,27 +105,23 @@ export default async function selectStep(ctx: Context) {
         return await ctx.replyWithLocalization('bad_req', sendOptions(ctx))
       }
     case 'select_country_from':
-      if (isCountry(ctx, message)) {
+      if (isFlag(ctx, message)) {
         return await handleCountryFrom(ctx, message)
       } else {
-        return await ctx.replyWithLocalization('bad_country', sendOptions(ctx))
+        return await ctx.replyWithLocalization('bad_req', sendOptions(ctx))
       }
     case 'select_method_from':
       return await handleMethodFrom(ctx, message)
     case 'select_country_to':
-      if (isCountry(ctx, message)) {
+      if (isFlag(ctx, message)) {
         return await handleCountryTo(ctx, message)
       } else {
-        return await ctx.replyWithLocalization('bad_country', sendOptions(ctx))
+        return await ctx.replyWithLocalization('bad_req', sendOptions(ctx))
       }
     case 'select_method_to':
       return await handleMethodTo(ctx, message)
     case 'select_currency':
-      if (isCurrency(ctx, message)) {
-        return await handleCurrency(ctx, message)
-      } else {
-        return await ctx.replyWithLocalization('bad_currency', sendOptions(ctx))
-      }
+      return await handleCurrency(ctx, message)
     case 'enter_amount':
       if (isAmount(ctx, message)) {
         return await handleAmount(ctx, message)
@@ -166,14 +162,6 @@ export default async function selectStep(ctx: Context) {
   }
 }
 
-function isCountry(ctx: Context, message: Message) {
-  return (
-    message.text == i18n.t(ctx.dbuser.language, 'pl') ||
-    message.text == i18n.t(ctx.dbuser.language, 'by') ||
-    message.text == i18n.t(ctx.dbuser.language, 'ru') ||
-    message.text == i18n.t(ctx.dbuser.language, 'ua')
-  )
-}
 function isPostOrder(ctx: Context, message: Message) {
   return message.text == i18n.t(ctx.dbuser.language, 'post')
 }

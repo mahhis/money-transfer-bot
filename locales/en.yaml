@@ -62,7 +62,7 @@ bad_start: |
 bad_start_tinder: | 
   I did not understand you
 
-  Click the "Send money" button if you want to send money or "My orders" if you want to view your requests, or you can select one of the commands:  
+  Click the "Other orders" button if you want to send money or "My orders" if you want to view your requests, or you can select one of the commands:  
   
   change /language
   what are the /guarantees?  
@@ -91,7 +91,7 @@ cancel_selected: |
  You are back to the main menu
 cancel: Cancel
 currency: |
- Select currency
+ Select currency or enter the name in free form
 by: Belarus
 pl: Poland
 ru: Russia
@@ -194,7 +194,7 @@ thank: |
 not_orders_yet: |
  You have no published orders.
 
- If you want to create, click the "Send money" button 
+ If you want to create, click the "Other orders" button 
 delete_order:
  Delete order
 my_orders: My orders
@@ -214,7 +214,7 @@ finish: |
  Click the "Finish" button when you have selected all the methods that suit you.
 finish_btn: Finish   
 offer_for_trnafer: |
- ${data.index} of ${data.length} ways
+ ${data.index} of ${data.length} ways trnasfer ${data.amount} ${data.currencyBuy}
 
  Visit ${data.platformForBuy}
  <a href="${data.linkFrom}">Buying</a>
@@ -234,3 +234,20 @@ offer_for_trnafer: |
 update_offers: Update offers
 one_click_transfer: |
  If you want to transfer money in one click through a bot, select the appropriate pair of offers and click the 'Transfer in one click' button
+make_transfer_btn: |
+  Make transfer
+make_transfer: |
+ At this stage, the bot works in manual mode.
+
+ The developer of the bot @ma66is will contact you soon to make a translation along the path you have chosen for you!
+
+ We apologize for the inconvenience!  
+make_transfer_no_username: |
+ At this stage, the bot works in manual mode.
+
+ Your username is not listed in your profile.
+ Send any sticker to the developer of this bot @ma66is so that it appears in your chat list and send him the message you have chosen for transfer
+
+ Then he will do everything for you!
+
+ We apologize for the inconvenience!  

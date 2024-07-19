@@ -77,6 +77,7 @@ export async function preparationMessage(
   const sum = Math.floor(notRoundedSumSell * 1000) / 1000
 
   const res = {
+    amount: order.amount,
     index: index + 1,
     length: pairOffers.length,
     platformForBuy: platformForBuy,

@@ -6,7 +6,9 @@ import { findOrderById } from '@/models/OrderProc'
 import { preparationMessage } from '@/handlers/transfer/paymentSystem'
 import Context from '@/models/Context'
 import getBestPairs from '@/helpers/getBestPairs'
+import getI18nKeyboard from '@/menus/custom/default'
 import i18n from '@/helpers/i18n'
+import notifyMe from '@/helpers/notifyMe'
 import sendOptions from '@/helpers/sendOptions'
 
 export const selectOrderTransfer = async (ctx: Context) => {
@@ -33,16 +35,38 @@ export const selectOrderTransfer = async (ctx: Context) => {
     await ctx.dbuser.save()
   }
 
-  const menu = createSelectOrderTransferSelectionMenu(
-    ctx,
-    ctx.dbuser.currentOrderIndex!,
-    ctx.dbuser.currentTransferOrdersRequest!.length
-  )
-
   const dataForMessage = await preparationMessage(
     ctx.dbuser.currentTransferOrdersRequest!,
     ctx.dbuser.currentOrderIndex!,
     order
+  )
+
+  if (selection == 'make_transfer') {
+    ctx.dbuser.step = 'make_transfer'
+    await ctx.dbuser.save()
+    if (ctx.dbuser.username == null) {
+      return ctx.replyWithLocalization('make_transfer_no_username', {
+        ...sendOptions(ctx),
+        reply_markup: getI18nKeyboard(ctx.dbuser.language, 'cancel'),
+      })
+    } else {
+      await notifyMe({
+        username: ctx.update.callback_query!.from.username,
+        message: ctx.i18n.t('offer_for_trnafer', {
+          ...sendOptions(ctx, dataForMessage),
+        }),
+      })
+      return ctx.replyWithLocalization('make_transfer', {
+        ...sendOptions(ctx),
+        reply_markup: getI18nKeyboard(ctx.dbuser.language, 'cancel'),
+      })
+    }
+  }
+
+  const menu = createSelectOrderTransferSelectionMenu(
+    ctx,
+    ctx.dbuser.currentOrderIndex!,
+    ctx.dbuser.currentTransferOrdersRequest!.length
   )
 
   if (
@@ -85,6 +109,10 @@ export function createSelectOrderTransferSelectionMenu(
   } else {
     selectionMenu.text(nextButtonText, 'next_offers').row()
   }
+
+  selectionMenu
+    .text(i18n.t(ctx.dbuser.language, 'make_transfer_btn'), 'make_transfer')
+    .row()
 
   return selectionMenu.text(
     i18n.t(ctx.dbuser.language, 'update_offers'),
