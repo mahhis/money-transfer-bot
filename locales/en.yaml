@@ -17,6 +17,8 @@ start_transfer : |
  Here you can send money to any country using a regular transfer to a card.
 
  To do this, we find the cheapest way to buy/sell cryptocurrency through p2p platforms.
+ 
+ change /language
 send_flag_from: |
  Open the emoji keyboard on your device, enter the country you want to send money from in the search and send the flag emoji of that country.
 
