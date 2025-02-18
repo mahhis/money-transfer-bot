@@ -5,7 +5,7 @@ import { User } from '@/models/User'
 // eslint-disable-next-line import/prefer-default-export
 export class Order {
   @prop({ index: true, ref: () => User })
-  public user?: Ref<User>
+  user?: Ref<User>
   @prop({ required: true })
   id!: number
 

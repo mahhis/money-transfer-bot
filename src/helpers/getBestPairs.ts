@@ -63,6 +63,7 @@ function findBestMatchingPairs(
   toOffers: Offer[]
 ): { fromOffer: Offer; toOffer: Offer }[] {
   const matchingPairs: { fromOffer: Offer; toOffer: Offer }[] = []
+  let matchingPairs1: { fromOffer: Offer; toOffer: Offer }[] = []
 
   const uniqueFromOffers = new Set<string>()
   const uniqueToOffers = new Set<string>()
@@ -85,10 +86,22 @@ function findBestMatchingPairs(
           matchingPairs.push({ fromOffer, toOffer })
           uniqueFromOffers.add(fromOfferId)
           uniqueToOffers.add(toOfferId)
+        } else {
+          matchingPairs1.push({ fromOffer, toOffer })
         }
       }
     }
   }
+  matchingPairs1 = matchingPairs.sort(
+    (a, b) =>
+      b.fromOffer.profit +
+      b.toOffer.profit -
+      (a.fromOffer.profit + a.toOffer.profit)
+  )
+  console.log(matchingPairs1[0])
+  console.log(matchingPairs1[1])
+  console.log(matchingPairs1[2])
+  console.log(matchingPairs1[3])
 
   return matchingPairs.sort(
     (a, b) =>
