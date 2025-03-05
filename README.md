@@ -15,13 +15,13 @@ To install and run the bot, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone <repository-link>
+    git clone [<repository-link>](https://github.com/mahhis/fe1p_bot.git)
     ```
 
 2. Navigate to the project folder:
 
     ```bash
-    cd <project-folder>
+    cd fe1p_bot
     ```
 
 3. Install dependencies using Yarn:
