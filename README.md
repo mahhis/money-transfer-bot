@@ -15,7 +15,7 @@ To install and run the bot, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone [<repository-link>](https://github.com/mahhis/fe1p_bot.git)
+    git clone https://github.com/mahhis/fe1p_bot.git
     ```
 
 2. Navigate to the project folder:
