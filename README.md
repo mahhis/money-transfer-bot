@@ -20,13 +20,13 @@ To install and run the bot, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/mahhis/fe1p_bot.git
+    git clone https://github.com/mahhis/money-transfer-bot.git
     ```
 
 2. Navigate to the project folder:
 
     ```bash
-    cd fe1p_bot
+    cd money-transfer-bot
     ```
 
 3. Launch the [mongo database](https://www.mongodb.com/) locally
