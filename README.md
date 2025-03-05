@@ -8,6 +8,11 @@ This Telegram bot helps users with money transfers. It offers two main functions
    
 2. **Cheap Route Search via P2P Platforms**: The bot tracks all major P2P platforms and provides users with buy and sell pairs based on their filters, showing where they can buy and sell currency at the best rates.
 
+## Live Demo
+
+The bot is currently running and can be tested. You can interact with the bot by visiting the following link:  
+[Try the Money Transfer Bot](https://t.me/fe1p_bot)
+
 ## Installation
 
 To install and run the bot, follow these steps:
@@ -47,5 +52,7 @@ To install and run the bot, follow these steps:
 - `CHAT_ID` — User id to whom notifications are sent
 
 Also, please, consider looking at `.env.example`.
+
+
 
 
