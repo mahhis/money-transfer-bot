@@ -24,17 +24,19 @@ To install and run the bot, follow these steps:
     cd <project-folder>
     ```
 
-3. Install dependencies using Yarn:
+3. Launch the [mongo database](https://www.mongodb.com/) locally
+
+4. Create a `.env` file and add the necessary environment variables.
+
+5. Install dependencies using Yarn:
 
     ```bash
     yarn install
     ```
 
-4. Create a `.env` file and add the necessary environment variables (e.g., Telegram bot token and other settings).
-
-## Running the Bot
-
-To start the bot, run the following command:
+6. To start the bot, run the following command:
 
 ```bash
 yarn start
+
+
