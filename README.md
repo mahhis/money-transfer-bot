@@ -33,10 +33,19 @@ To install and run the bot, follow these steps:
     ```bash
     yarn install
     ```
+6. To start the bot, run the following command::
 
-6. To start the bot, run the following command:
+    ```bash
+    yarn start
+    ```    
 
-```bash
-yarn start
+## Environment variables
+
+- `TOKEN` — Telegram bot token
+- `MONGO`— URL of the mongo database
+- `TOKEN_NOTIFY` — Notifier bot
+- `CHAT_ID` — User id to whom notifications are sent
+
+Also, please, consider looking at `.env.example`.
 
 
