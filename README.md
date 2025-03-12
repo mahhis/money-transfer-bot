@@ -31,7 +31,7 @@ To install and run the bot, follow these steps:
 
 3. Launch the [mongo database](https://www.mongodb.com/) locally
 
-4. Create a `.env` file and add the necessary environment variables.
+4. Create a `.env` file and add the necessary environment variables. Example at `.env.example`.
 
 5. Install dependencies using Yarn:
 
@@ -51,7 +51,6 @@ To install and run the bot, follow these steps:
 - `TOKEN_NOTIFY` — Notifier bot
 - `CHAT_ID` — User id to whom notifications are sent
 
-Also, please, consider looking at `.env.example`.
 
 
 
