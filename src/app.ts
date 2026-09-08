@@ -1,6 +1,8 @@
+import * as mongoose from 'mongoose'
 import 'module-alias/register'
 import 'reflect-metadata'
 import 'source-map-support/register'
+import { activity, createLifecycle } from '@/helpers/lifecycle'
 
 import {
   getFromPaymentSystemsMenu,
@@ -22,7 +24,16 @@ import sendGuarantees from '@/handlers/tinder/guarantees'
 import sendStart from '@/handlers/start'
 import startMongo from '@/helpers/startMongo'
 
+const lifecycle = createLifecycle({
+  ready: () => mongoose.connection.readyState === 1,
+  close: async () => {
+    await mongoose.connection.close()
+  },
+})
+
 async function runApp() {
+  await lifecycle.open()
+  bot.use(activity.middleware())
   console.log('Starting app...')
   // Mongo
   await startMongo()
@@ -66,7 +77,7 @@ async function runApp() {
   bot.catch(console.error)
   // Start bot
   await bot.init()
-  run(bot)
+  lifecycle.launch(() => run(bot))
   console.info(`Bot ${bot.botInfo.username} is up and running`)
 }
 
